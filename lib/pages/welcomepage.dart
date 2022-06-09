@@ -66,7 +66,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         ),
                         const SizedBox(height: 20),
                         Text(
-                          "Are you ready to uproot and start over in a new area? Ajosuite will help you out!",
+                          "Track your Ajo or esusu, get sms and push notifications on the App.",
                           maxLines: 2,
                           overflow: TextOverflow.clip,
                           softWrap: true,
