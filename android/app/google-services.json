@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "280236073052",
+    "project_id": "ajosuites-aed2e",
+    "storage_bucket": "ajosuites-aed2e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280236073052:android:639f03342f5ae8acd7c699",
+        "android_client_info": {
+          "package_name": "com.ajosuitessaver.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280236073052-1reu1uparg4njv8gejt2v26io1p8u690.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNIyFyhOXhE-TH2nLl5koQ3dUaYieQbro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280236073052-1reu1uparg4njv8gejt2v26io1p8u690.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

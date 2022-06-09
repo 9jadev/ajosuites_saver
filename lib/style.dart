@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+
 //HexColor("#1A132F")
-Color primary = const Color.fromRGBO(20,63,107, 1);
+Color primary = const Color.fromRGBO(20, 63, 107, 1);
 Color white = const Color.fromRGBO(255, 255, 255, 1);
 Color indicatecolor = HexColor('#D8DFE4');
 Color black = Colors.black;
@@ -24,15 +25,8 @@ Color savingcard = HexColor("#E5E5E5");
 Color shimerbase = Colors.grey.shade300;
 Color shimerto = Colors.grey.shade100;
 
-
 TextStyle hintextstyle = TextStyle(
-  fontWeight: FontWeight.w400,
-  fontSize: 15,
-  color: HexColor("#7D7F88")
-);
+    fontWeight: FontWeight.w400, fontSize: 15, color: HexColor("#7D7F88"));
 
-TextStyle kpagelabel = TextStyle(
-  fontSize: 20,
-  fontWeight: FontWeight.w600,
-  color: white
-);
+TextStyle kpagelabel =
+    TextStyle(fontSize: 15, fontWeight: FontWeight.w300, color: black);

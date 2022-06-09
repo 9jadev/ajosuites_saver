@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:ajosuite_saver/style.dart';
 
-
 class Savingshimming extends StatelessWidget {
   const Savingshimming({Key? key}) : super(key: key);
 
@@ -12,10 +11,10 @@ class Savingshimming extends StatelessWidget {
       height: 130,
       width: 300,
       padding: EdgeInsets.all(10),
-      margin: EdgeInsets.only(left: 10),
+      margin: EdgeInsets.only(left: 0, right: 10),
       decoration: BoxDecoration(
         color: white,
-        borderRadius: BorderRadius.circular(10), 
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,7 +73,6 @@ class Savingshimming extends StatelessWidget {
                   ),
                 ),
               ),
-
               const SizedBox(height: 5),
               Shimmer.fromColors(
                 baseColor: shimerbase,
@@ -103,7 +101,6 @@ class Savingshimming extends StatelessWidget {
               ),
             ],
           ),
-          
         ],
       ),
     );

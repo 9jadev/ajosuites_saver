@@ -14,13 +14,13 @@ class Savingshimmer extends StatelessWidget {
         children: [
           Shimmer.fromColors(
             baseColor: shimerbase,
-            highlightColor: shimerto,
+            highlightColor: white,
             child: Container(
-              width: 60,
-              height: 60,
+              width: 40,
+              height: 40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
-                color: shimerto,
+                color: white,
               ),
             ),
           ),
@@ -30,47 +30,46 @@ class Savingshimmer extends StatelessWidget {
             children: [
               Shimmer.fromColors(
                 baseColor: shimerbase,
-                highlightColor: shimerto,
+                highlightColor: white,
                 child: Container(
                   width: 200,
-                  height: 10,
+                  height: 7,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
-                    color: shimerto,
+                    color: white,
                   ),
                 ),
               ),
-              const SizedBox(height: 7),
+              const SizedBox(height: 4),
               Shimmer.fromColors(
                 baseColor: shimerbase,
-                highlightColor: shimerto,
+                highlightColor: white,
                 child: Container(
-                  width: 60.w,
-                  height: 10,
+                  width: 70.w,
+                  height: 7,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
-                    color: shimerto,
+                    color: white,
                   ),
                 ),
               ),
-              SizedBox(height: 7),
+              SizedBox(height: 4),
               Shimmer.fromColors(
                 baseColor: shimerbase,
-                highlightColor: shimerto,
+                highlightColor: white,
                 child: Container(
-                  width: 20.w,
-                  height: 10,
+                  width: 40.w,
+                  height: 7,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
-                    color: shimerto,
+                    color: white,
                   ),
                 ),
               ),
-              
-            ],  
+            ],
           )
         ],
       ),
-    ); 
+    );
   }
 }

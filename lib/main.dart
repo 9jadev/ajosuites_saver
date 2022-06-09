@@ -9,16 +9,41 @@ import 'package:sizer/sizer.dart';
 import 'style.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:get/get.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'services/notifications.dart';
 
+// /// To verify things are working, check out the native platform logs.
+// Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+//   // If you're going to use other Firebase services in the background, such as Firestore,
+//   // make sure you call `initializeApp` before using other Firebase services.
+//   await Firebase.initializeApp();
+//   print('Handling a background message ${message.messageId}');
+// }
 
-void main() => runApp(
-  DevicePreview(
+const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'high_importance_channel', // id
+    'High Importance Notifications', // title
+    importance: Importance.high,
+    playSound: true);
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+// void main() => runApp(
+//       DevicePreview(
+//         enabled: false,
+//         builder: (context) => const MyApp(), // Wrap your app
+//       ),
+//     );
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await PushNotificationService().setupInteractedMessage();
+  runApp(DevicePreview(
     enabled: false,
-    builder: (context) => const MyApp(), // Wrap your app
-  ),
-);
-
-
+    builder: (context) => MyApp(), // Wrap your app
+  ));
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -41,8 +66,12 @@ class _MyAppState extends State<MyApp> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
+
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
       systemNavigationBarColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.dark,
     ));
     return GlobalLoaderOverlay(
       useDefaultLoading: false,
@@ -55,7 +84,7 @@ class _MyAppState extends State<MyApp> {
           width: 120,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(10)
+            borderRadius: BorderRadius.circular(10),
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -72,7 +101,7 @@ class _MyAppState extends State<MyApp> {
                   fontWeight: FontWeight.w600,
                   fontSize: 13,
                   color: Colors.black,
-                  fontFamily: GoogleFonts.actor().toString(),  
+                  fontFamily: GoogleFonts.actor().toString(),
                 ),
               )
             ],
@@ -86,24 +115,25 @@ class _MyAppState extends State<MyApp> {
             behavior: HitTestBehavior.opaque,
             onTap: () {
               FocusScopeNode currentFocus = FocusScope.of(context);
-              if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+              if (!currentFocus.hasPrimaryFocus &&
+                  currentFocus.focusedChild != null) {
                 FocusManager.instance.primaryFocus?.unfocus();
               }
-            },  
+            },
             child: GetMaterialApp(
               title: 'AJO SUITES',
               debugShowCheckedModeBanner: false,
               theme: CustomTheme.lightTheme,
               darkTheme: CustomTheme.darkTheme,
-              themeMode: currentTheme.currentTheme,     
+              themeMode: currentTheme.currentTheme,
               // themeMode: ThemeMode.light,
               initialRoute: '/firstpage',
               // initialRoute: '/dashboard/saversavings/print',
-              getPages: approutlist
+              getPages: approutlist,
             ),
           );
         },
-      )
+      ),
     );
   }
 }

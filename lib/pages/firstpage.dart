@@ -2,6 +2,8 @@ import 'package:ajosuite_saver/style.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:get/get.dart';
+import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FirstaPage extends StatefulWidget {
   const FirstaPage({Key? key}) : super(key: key);
@@ -11,22 +13,46 @@ class FirstaPage extends StatefulWidget {
 }
 
 class _FirstaPageState extends State<FirstaPage> {
+  dynamic token;
 
   initial() {
     Timer(Duration(seconds: 3), () {
-      Get.offAllNamed("welcomepage");
+      if (token == null) {
+        Get.offAllNamed("welcomepage");
+        return;
+      }
+      if (token != null) {
+        Get.offAllNamed("dashboard/home");
+        return;
+      }
     });
+  }
+
+  checkpassgetstarted() async {
+    SharedPreferences authstorage = await SharedPreferences.getInstance();
+    setState(() {
+      token = authstorage.getString("token");
+    });
+    initial();
   }
 
   @override
   void initState() {
-    initial();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      checkpassgetstarted();
+    });
+    // initial();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+        backgroundColor: primary,
+        elevation: 0,
+      ),
       backgroundColor: primary,
       body: Center(
         child: Column(
@@ -39,11 +65,10 @@ class _FirstaPageState extends State<FirstaPage> {
             Text(
               "Ajosuite Saver",
               style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.w700,
-                height: 4.8,
-                color: white
-              ),
+                  fontSize: 32,
+                  fontWeight: FontWeight.w700,
+                  height: 4.8,
+                  color: white),
             ),
             Text(
               "Loading Please wait...",
@@ -51,7 +76,7 @@ class _FirstaPageState extends State<FirstaPage> {
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
                 height: 2.4,
-                color: white
+                color: white,
               ),
             )
           ],

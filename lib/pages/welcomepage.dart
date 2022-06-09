@@ -1,5 +1,6 @@
 import 'package:ajosuite_saver/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
@@ -16,6 +17,9 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primary,
+      appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+      ),
       body: SingleChildScrollView(
         child: SizedBox(
           height: 100.h,
@@ -26,11 +30,10 @@ class _WelcomePageState extends State<WelcomePage> {
                 Text(
                   "Ajo Suite",
                   style: TextStyle(
-                    color: white,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 24,
-                    height: 3.6
-                  ),
+                      color: white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 24,
+                      height: 3.6),
                 ),
                 const SizedBox(height: 30),
                 Padding(
@@ -45,21 +48,19 @@ class _WelcomePageState extends State<WelcomePage> {
                     width: 100.w,
                     padding: const EdgeInsets.all(15.0),
                     decoration: BoxDecoration(
-                      color: white,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(32),
-                        topRight: Radius.circular(32)
-                      )
-                    ),
+                        color: white,
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(32),
+                            topRight: Radius.circular(32))),
                     child: ListView(
                       children: [
-                        const SizedBox(height: 20),
+                        // const SizedBox(height: 10),
                         Text(
                           "Welcome to Ajosuite",
                           style: TextStyle(
                             color: HexColor("#1A132F"),
-                            fontWeight: FontWeight.w600,
-                            fontSize: 40,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
                             height: 1.3,
                           ),
                         ),
@@ -72,40 +73,38 @@ class _WelcomePageState extends State<WelcomePage> {
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                             color: textonbordcolor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            letterSpacing: 0.28,
-                            height: 1.5
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            // letterSpacing: 0.28,
+                            // height: 1.,
                           ),
                         ),
-
+                        const SizedBox(height: 20),
                         InkWell(
                           onTap: () => Get.offAllNamed("getbusiness"),
                           child: Container(
                             width: 100.w,
-                            height: 58,
+                            height: 50,
                             margin: const EdgeInsets.only(top: 15),
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                               color: buttoncolor,
-                              borderRadius: BorderRadius.circular(6)
+                              borderRadius: BorderRadius.circular(6),
                             ),
                             child: Text(
                               "Get Started",
                               style: TextStyle(
                                 color: white,
                                 fontSize: 16,
-                                fontWeight: FontWeight.w600
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
                         )
-
                       ],
                     ),
                   ),
                 ),
-                
               ],
             ),
           ),

@@ -1,4 +1,4 @@
-package com.example.ajosuite_saver
+package com.ajosuitessaver.app
 
 import io.flutter.embedding.android.FlutterActivity
 
