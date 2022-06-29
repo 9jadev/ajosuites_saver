@@ -36,10 +36,10 @@ class _WithdrawalPageState extends State<WithdrawalPage> {
   Future getwithdrawal() async {
     await hompage.getwithdrawal().then((val) {
       if (val["status"] == "success") {
-        // if (!hompage.loadwith.value) {
-        //   hompage.loadwith.value = false;
-        //   hompage.loadedbeforewith.value = false;
-        // }
+        if (!hompage.loadwith.value) {
+          hompage.loadwith.value = false;
+          hompage.loadedbeforewith.value = false;
+        }
         hompage.loadwith.value = false;
         setState(() {
           next_page_url = val["withdrawal"]["next_page_url"];
@@ -49,8 +49,9 @@ class _WithdrawalPageState extends State<WithdrawalPage> {
         return;
       }
       if (val["status"] == "error") {
-        snackbar(message: val["message"], header: "", bcolor: error);
-
+        // snackbar(message: val["message"], header: "", bcolor: error);
+        hompage.loadwith.value = false;
+        hompage.loadedbeforewith.value = false;
         hompage.loadtransactions.value = false;
 
         return;
@@ -80,9 +81,11 @@ class _WithdrawalPageState extends State<WithdrawalPage> {
         return;
       }
       if (val["status"] == "error") {
-        snackbar(message: val["message"], header: "", bcolor: error);
+        // snackbar(message: val["message"], header: "", bcolor: error);
 
         hompage.loadtransactions.value = false;
+        hompage.loadwith.value = false;
+        hompage.loadwith.value = false;
         setState(() {
           loadmore = false;
         });
@@ -214,13 +217,19 @@ class _WithdrawalPageState extends State<WithdrawalPage> {
                               Savingshimmer(),
                               Savingshimmer(),
                               Savingshimmer(),
+                              Savingshimmer(),
+                              Savingshimmer(),
+                              Savingshimmer(),
+                              Savingshimmer(),
                             ],
                           ),
                         ),
                       ),
                       Obx(
                         () => Visibility(
-                          visible: !hompage.loadwith.value,
+                          visible: !hompage.loadwith.value &&
+                              hompage.withdrawals.isNotEmpty,
+                          // visible: true,
                           child: RefreshIndicator(
                             onRefresh: () => refreshWith(),
                             child: ListView.builder(
@@ -328,38 +337,54 @@ class _WithdrawalPageState extends State<WithdrawalPage> {
                           ),
                         ),
                       ),
-                      // Visibility(
-                      //   visible: next_page_url != null && loadmore == false,
-                      //   child: Center(
-                      //     child: Padding(
-                      //       padding: const EdgeInsets.only(top: 10, bottom: 10),
-                      //       child: Row(
-                      //         crossAxisAlignment: CrossAxisAlignment.center,
-                      //         mainAxisAlignment: MainAxisAlignment.center,
-                      //         children: [
-                      //           Icon(
-                      //             Ionicons.folder,
-                      //             color: primary,
-                      //             size: 10,
-                      //           ),
-                      //           SizedBox(width: 10),
-                      //           Text(
-                      //             "Load More",
-                      //             style: TextStyle(
-                      //               fontWeight: FontWeight.w300,
-                      //               color: primary,
-                      //               fontSize: 10,
-                      //             ),
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
-
+                      Obx(
+                        () => Visibility(
+                          visible: hompage.withdrawals.isEmpty &&
+                              !hompage.loadwith.value,
+                          child: Center(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        'assets/image/404.png',
+                                        // height: 40.h,
+                                      ),
+                                      SizedBox(height: 20),
+                                      Text(
+                                        "No Withdrawal Data",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          color: primary,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Text(
+                                        "No available record of withdrawals present at this time.",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          color: primary,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                       Visibility(
-                        visible:
-                            next_page_url == null && !hompage.loadwith.value,
+                        visible: next_page_url == null &&
+                            hompage.loadwith.value &&
+                            hompage.withdrawals.isNotEmpty,
                         child: Center(
                           child: Padding(
                             padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -381,7 +406,6 @@ class _WithdrawalPageState extends State<WithdrawalPage> {
                           ),
                         ),
                       ),
-
                       Visibility(
                         visible: loadmore,
                         child: Center(

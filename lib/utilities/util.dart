@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../style.dart';
 import 'package:get/get.dart';
-import 'package:toast/toast.dart';
+// import 'package:toast/toast.dart';
 
 class MyBehavior extends ScrollBehavior {
   @override
@@ -33,7 +33,7 @@ snackbar(
     barBlur: 20,
     isDismissible: true,
     snackPosition: SnackPosition.TOP,
-    duration: const Duration(seconds: 3),
+    duration: const Duration(seconds: 2),
   );
 }
 

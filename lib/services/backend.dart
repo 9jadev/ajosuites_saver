@@ -276,6 +276,104 @@ class Backend {
     return otpresponse;
   }
 
+  Future<dynamic> availblecirles({required Map data}) async {
+    dynamic otpresponse;
+    try {
+      String token = await authtoken();
+      print(token);
+      Response responseobj = await _dio.post(
+        '${_baseUrl}saver/circle/unactive',
+        data: jsonEncode(data),
+        options: Options(
+          headers: {
+            "authorization": 'Bearer $token',
+            "Accept": "application/json"
+          },
+        ),
+      );
+      otpresponse = responseobj.data;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        // print('DATA: ${e.response?.data}');
+        otpresponse = e.response?.data;
+      } else {
+        otpresponse = {
+          "status": "error",
+          "message": "Error occured (Network Connection)"
+        };
+        return otpresponse;
+      }
+      return otpresponse;
+    }
+    return otpresponse;
+  }
+
+  Future<dynamic> availblecirle({required Map data}) async {
+    dynamic otpresponse;
+    try {
+      String token = await authtoken();
+      print(token);
+      Response responseobj = await _dio.post(
+        '${_baseUrl}saver/circle/single',
+        data: jsonEncode(data),
+        options: Options(
+          headers: {
+            "authorization": 'Bearer $token',
+            "Accept": "application/json"
+          },
+        ),
+      );
+      otpresponse = responseobj.data;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        // print('DATA: ${e.response?.data}');
+        otpresponse = e.response?.data;
+      } else {
+        otpresponse = {
+          "status": "error",
+          "message": "Error occured (Network Connection)"
+        };
+        return otpresponse;
+      }
+      return otpresponse;
+    }
+    return otpresponse;
+  }
+
+  Future<dynamic> joincircle({required Map data}) async {
+    dynamic otpresponse;
+    try {
+      String token = await authtoken();
+      print(token);
+      Response responseobj = await _dio.post(
+        '${_baseUrl}saver/circle/joincircle',
+        data: jsonEncode(data),
+        options: Options(
+          headers: {
+            "authorization": 'Bearer $token',
+            "Accept": "application/json"
+          },
+        ),
+      );
+      otpresponse = responseobj.data;
+    } on DioError catch (e) {
+      if (e.response != null) {
+        // print('DATA: ${e.response?.data}');
+        otpresponse = e.response?.data;
+      } else {
+        otpresponse = {
+          "status": "error",
+          "message": "Error occured (Network Connection)"
+        };
+        return otpresponse;
+      }
+      return otpresponse;
+    }
+    return otpresponse;
+  }
+
+  // selectdatesUpload
+
   Future<dynamic> paginator({required Map data, required String url}) async {
     dynamic responsedata;
     try {

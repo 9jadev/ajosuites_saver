@@ -30,3 +30,22 @@ TextStyle hintextstyle = TextStyle(
 
 TextStyle kpagelabel =
     TextStyle(fontSize: 15, fontWeight: FontWeight.w300, color: black);
+
+BoxDecoration cirleboxstyle = BoxDecoration(
+  color: white.withOpacity(0.4),
+  borderRadius: BorderRadius.circular(5),
+  border: Border.all(
+    color: primary.withOpacity(0.2),
+  ),
+  boxShadow: [
+    BoxShadow(
+      color: Colors.grey.withOpacity(0.2),
+      blurRadius: 0.3, // soften the shadow
+      spreadRadius: 1.0, //extend the shadow
+      offset: Offset(
+        0, // Move to right 10  horizontally
+        0.5, // Move to bottom 10 Vertically
+      ),
+    )
+  ],
+);

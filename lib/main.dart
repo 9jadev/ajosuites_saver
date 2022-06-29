@@ -128,7 +128,7 @@ class _MyAppState extends State<MyApp> {
               themeMode: currentTheme.currentTheme,
               // themeMode: ThemeMode.light,
               initialRoute: '/firstpage',
-              // initialRoute: '/dashboard/saversavings/print',
+              // initialRoute: '/welcomepage',
               getPages: approutlist,
             ),
           );

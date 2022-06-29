@@ -82,7 +82,9 @@ class _SinglewithdrawalState extends State<Singlewithdrawal> {
                 Expanded(
                   child: Container(
                     alignment: Alignment.centerLeft,
-                    child: Text(dateformater(withdrawaldata["created_at"])),
+                    child: Text(
+                      dateformater(withdrawaldata["created_at"].toString()),
+                    ),
                   ),
                 )
               ],

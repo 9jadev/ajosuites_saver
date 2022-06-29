@@ -1,10 +1,8 @@
-import 'package:ajosuite_saver/components/header.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ajosuite_saver/style.dart';
 import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-
 import 'package:ajosuite_saver/controllers/dashboard/homecontroller.dart';
 
 class SavingCirle extends StatefulWidget {
@@ -85,6 +83,22 @@ class _SavingCirleState extends State<SavingCirle> {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => Get.toNamed("dashboard/joincircle"),
+        label: Row(
+          children: [
+            Icon(Icons.add),
+            Text(
+              'Join Circle',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            )
+          ],
+        ),
+        backgroundColor: primary,
+      ),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
         child: Column(
@@ -117,7 +131,7 @@ class _SavingCirleState extends State<SavingCirle> {
                         ),
                       ),
                       Text(
-                        "Saving Cirles allow you to joint already existing saving rings created and manage buy your business.",
+                        "Saving Cirles allow you to joint already existing saving rings created and manage by your business.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 10,

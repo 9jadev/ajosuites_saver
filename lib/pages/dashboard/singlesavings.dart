@@ -328,6 +328,7 @@ class _SingleSavingsState extends State<SingleSavings> {
                             savings["savings_type"],
                             style: TextStyle(
                               color: white,
+                              fontSize: 10,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -366,6 +367,7 @@ class _SingleSavingsState extends State<SingleSavings> {
                               "Active",
                               style: TextStyle(
                                 color: white,
+                                fontSize: 10,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -384,6 +386,7 @@ class _SingleSavingsState extends State<SingleSavings> {
                               "Compeleted",
                               style: TextStyle(
                                 color: white,
+                                fontSize: 10,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -402,6 +405,7 @@ class _SingleSavingsState extends State<SingleSavings> {
                               "Blocked",
                               style: TextStyle(
                                 color: white,
+                                fontSize: 10,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -420,6 +424,7 @@ class _SingleSavingsState extends State<SingleSavings> {
                               "Withdrawn",
                               style: TextStyle(
                                 color: white,
+                                fontSize: 10,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),

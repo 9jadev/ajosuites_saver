@@ -152,7 +152,7 @@ class _GetBusinessState extends State<GetBusiness> {
             Padding(
               padding: const EdgeInsets.only(left: 15.0, right: 15.0),
               child: Text(
-                "Enter phone number above to search hone number below to search for business.",
+                "Enter phone number above to search for business.",
                 // textAlign: TextAlign.justify,
                 style: TextStyle(
                   color: white,

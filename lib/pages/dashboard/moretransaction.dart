@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:sizer/sizer.dart';
+import 'package:get/get.dart';
 import 'package:ajosuite_saver/services/backend.dart';
 
 class MoreTransactions extends StatefulWidget {
@@ -148,82 +149,100 @@ class _MoreTransactionsState extends State<MoreTransactions> {
                         child: Column(
                           children: transactions!
                               .map(
-                                (item) => Container(
-                                  // height: 50,
-                                  width: 100.w,
-                                  margin: EdgeInsets.only(bottom: 10),
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 5),
-                                  decoration: BoxDecoration(
-                                    color: savingcard.withOpacity(0.4),
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(
-                                      color: primary.withOpacity(0.5),
+                                (item) => GestureDetector(
+                                  onTap: () {
+                                    if (item["type"].toString() == "savings") {
+                                      Get.toNamed("dashboard/singlesavings",
+                                          arguments: item["savings_serial"]
+                                              .toString());
+                                      return;
+                                    } else {
+                                      Get.toNamed(
+                                        "dashboard/singlewithdrawal",
+                                        arguments: item,
+                                      );
+                                      return;
+                                    }
+                                  },
+                                  child: Container(
+                                    // height: 50,
+                                    width: 100.w,
+                                    margin: EdgeInsets.only(bottom: 10),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    decoration: BoxDecoration(
+                                      color: savingcard.withOpacity(0.4),
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                        color: primary.withOpacity(0.5),
+                                      ),
                                     ),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        height: 30,
-                                        width: 30,
-                                        // alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: white,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          height: 30,
+                                          width: 30,
+                                          // alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: white,
+                                          ),
+                                          child: Icon(
+                                            item["type"] == "savings"
+                                                ? FontAwesome5Regular
+                                                    .money_bill_alt
+                                                : Ionicons.stats_chart,
+                                            color: item["type"] == "savings"
+                                                ? primary
+                                                : success,
+                                            size: 10,
+                                          ),
                                         ),
-                                        child: Icon(
-                                          item["type"] == "savings"
-                                              ? FontAwesome5Regular
-                                                  .money_bill_alt
-                                              : Ionicons.stats_chart,
-                                          color: item["type"] == "savings"
-                                              ? primary
-                                              : success,
-                                          size: 10,
-                                        ),
-                                      ),
-                                      SizedBox(width: 10),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Visibility(
-                                            visible: item["type"] == "savings",
-                                            child: Text(
-                                              "Saving: " +
-                                                  item["savings_serial"]
-                                                      .toString(),
+                                        SizedBox(width: 10),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Visibility(
+                                              visible:
+                                                  item["type"] == "savings",
+                                              child: Text(
+                                                "Saving: " +
+                                                    item["savings_serial"]
+                                                        .toString(),
+                                                style: TextStyle(
+                                                  fontSize: 10,
+                                                ),
+                                              ),
+                                            ),
+                                            Visibility(
+                                              visible:
+                                                  item["type"] != "savings",
+                                              child: Text(
+                                                "Withdrawal Id: " +
+                                                    item["withdrawal_id"]
+                                                        .toString(),
+                                                style: TextStyle(
+                                                  fontSize: 10,
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              stringamount(item["amount"]),
                                               style: TextStyle(
                                                 fontSize: 10,
                                               ),
                                             ),
-                                          ),
-                                          Visibility(
-                                            visible: item["type"] != "savings",
-                                            child: Text(
-                                              "Withdrawal Id: " +
-                                                  item["withdrawal_id"]
-                                                      .toString(),
+                                            Text(
+                                              dateformater(item["created_at"]),
                                               style: TextStyle(
                                                 fontSize: 10,
                                               ),
                                             ),
-                                          ),
-                                          Text(
-                                            stringamount(item["amount"]),
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                            ),
-                                          ),
-                                          Text(
-                                            dateformater(item["created_at"]),
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               )

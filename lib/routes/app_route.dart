@@ -1,3 +1,4 @@
+import 'package:ajosuite_saver/controllers/dashboard/addcirclecontroller.dart';
 import 'package:ajosuite_saver/controllers/dashboard/savingcontroller.dart';
 import 'package:ajosuite_saver/controllers/dashboard/singlesavingcontroller.dart';
 import 'package:ajosuite_saver/controllers/firstpagecontroller.dart';
@@ -6,6 +7,8 @@ import 'package:ajosuite_saver/controllers/getbusinesscontroller.dart';
 import 'package:ajosuite_saver/controllers/dashboard/homecontroller.dart';
 import 'package:ajosuite_saver/controllers/dashboard/singlewithdrawalcontroller.dart';
 import 'package:ajosuite_saver/controllers/loginpagecontroller.dart';
+import 'package:ajosuite_saver/pages/dashboard/addcircle.dart';
+import 'package:ajosuite_saver/pages/dashboard/addcirclesingle.dart';
 import 'package:ajosuite_saver/pages/dashboard/home.dart';
 import 'package:ajosuite_saver/pages/dashboard/moretransaction.dart';
 import 'package:ajosuite_saver/pages/dashboard/profile.dart';
@@ -104,6 +107,22 @@ List<GetPage> approutlist = [
     transition: Transition.fade,
     binding: BindingsBuilder(
       () => {Get.put(HomePageController())},
+    ),
+  ),
+  GetPage(
+    name: '/dashboard/joincircle',
+    page: () => const JoinCircle(),
+    transition: Transition.fade,
+    binding: BindingsBuilder(
+      () => {Get.put(AddCircleController())},
+    ),
+  ),
+  GetPage(
+    name: '/dashboard/joincirclesingle',
+    page: () => const AddCirclSingle(),
+    transition: Transition.fade,
+    binding: BindingsBuilder(
+      () => {Get.put(AddCircleController())},
     ),
   )
 ];

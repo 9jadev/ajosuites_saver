@@ -7,8 +7,6 @@ import 'package:ajosuite_saver/controllers/dashboard/homecontroller.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'savings.dart';
 import 'withdrawals.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,10 +15,10 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-int? state = 1;
+int? state = 0;
 List? pages = [
-  Savings(),
   Dashboard(),
+  Savings(),
   WithdrawalPage(),
   SavingCirle(),
 ];
@@ -57,12 +55,12 @@ class _HomePageState extends State<HomePage> {
           onTap: _onItemTapped,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(FontAwesome5Regular.money_bill_alt),
-              label: 'Savings',
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Ionicons.home),
               label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(FontAwesome5Regular.money_bill_alt),
+              label: 'Savings',
             ),
             BottomNavigationBarItem(
               icon: Icon(Ionicons.stats_chart),
