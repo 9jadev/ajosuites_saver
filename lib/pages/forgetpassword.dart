@@ -9,6 +9,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:ajosuite_saver/controllers/forgetpasswordcontroller.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
+import 'package:flutter/services.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
@@ -27,6 +28,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     setState(() {
       business = jsonDecode(Get.parameters["business"]!);
     });
+    _updateAppbar();
     super.initState();
   }
 
@@ -59,6 +61,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       print(_);
       context.loaderOverlay.hide();
     });
+  }
+
+  void _updateAppbar() {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   }
 
   @override

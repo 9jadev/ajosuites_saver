@@ -109,17 +109,12 @@ class _GetBusinessState extends State<GetBusiness> {
                       getbus.phone.value = val;
                     },
                     keyboardType: TextInputType.phone,
-                    style: TextStyle(
-                      color: inpuTextColor,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      height: 1.5,
-                    ),
                     decoration: InputDecoration(
-                        prefixIcon: Icon(
-                      Icons.dialpad,
-                      color: inpuTextColor,
-                    )),
+                      prefixIcon: Icon(
+                        Icons.dialpad,
+                        color: inpuTextColor,
+                      ),
+                    ),
                   ),
                   InkWell(
                     // onTap: () => Get.offAllNamed("login"),

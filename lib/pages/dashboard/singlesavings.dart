@@ -72,391 +72,397 @@ class _SingleSavingsState extends State<SingleSavings> {
                 radius: 15,
               ),
             )
-          : SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: 15),
-                  Container(
-                    width: 100.w,
-                    padding: EdgeInsets.only(bottom: 5),
-                    margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Colors.grey.shade300,
-                          width: 1,
-                          style: BorderStyle.solid,
-                        ),
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          savings["savings_serial"].toString(),
-                          style: TextStyle(
-                            color: black,
-                            fontWeight: FontWeight.w700,
+          : ScrollConfiguration(
+              behavior: MyBehavior(),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: 15),
+                    Container(
+                      width: 100.w,
+                      padding: EdgeInsets.only(bottom: 5),
+                      margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey.shade300,
+                            width: 1,
+                            style: BorderStyle.solid,
                           ),
                         ),
-                        SizedBox(height: 7),
-                        Text("Saving ID"),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 100.w,
-                    padding: EdgeInsets.only(bottom: 5),
-                    margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Colors.grey.shade300,
-                          width: 1,
-                          style: BorderStyle.solid,
-                        ),
                       ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          stringamount(
-                              savings["saving_total_amount"].toString()),
-                          style: TextStyle(
-                            color: black,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        SizedBox(height: 7),
-                        Text("Total Amount"),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 100.w,
-                    padding: EdgeInsets.only(bottom: 5),
-                    margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Colors.grey.shade300,
-                          width: 1,
-                          style: BorderStyle.solid,
-                        ),
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          stringamount(savings["saving_amount"].toString()),
-                          style: TextStyle(
-                            color: black,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        SizedBox(height: 7),
-                        Text("Recuring Payment Amount"),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 100.w,
-                    padding: EdgeInsets.only(bottom: 5),
-                    margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Colors.grey.shade300,
-                          width: 1,
-                          style: BorderStyle.solid,
-                        ),
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          stringamount('1000'),
-                          style: TextStyle(
-                            color: black,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        SizedBox(height: 7),
-                        Text("Saved Amount"),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 100.w,
-                    padding: EdgeInsets.only(bottom: 5),
-                    margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Colors.grey.shade300,
-                          width: 1,
-                          style: BorderStyle.solid,
-                        ),
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          savings["saving_interval"].toString(),
-                          style: TextStyle(
-                            color: black,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        SizedBox(height: 7),
-                        Text("Total interval"),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 100.w,
-                    padding: EdgeInsets.only(bottom: 5),
-                    margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Colors.grey.shade300,
-                          width: 1,
-                          style: BorderStyle.solid,
-                        ),
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          savings["paid_interval"].toString(),
-                          style: TextStyle(
-                            color: black,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        SizedBox(height: 7),
-                        Text("Paid Interval"),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 100.w,
-                    padding: EdgeInsets.only(bottom: 5),
-                    margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Colors.grey.shade300,
-                          width: 1,
-                          style: BorderStyle.solid,
-                        ),
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          dateformater(savings["start_date"]),
-                          style: TextStyle(
-                            color: black,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        SizedBox(height: 7),
-                        Text("Start Date"),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 100.w,
-                    padding: EdgeInsets.only(bottom: 5),
-                    margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Colors.grey.shade300,
-                          width: 1,
-                          style: BorderStyle.solid,
-                        ),
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          dateformater(savings["end_date"]),
-                          style: TextStyle(
-                            color: black,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        SizedBox(height: 7),
-                        Text("End Date"),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 100.w,
-                    padding: EdgeInsets.only(bottom: 5),
-                    margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Colors.grey.shade300,
-                          width: 1,
-                          style: BorderStyle.solid,
-                        ),
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(
-                              left: 10, right: 10, top: 3, bottom: 3),
-                          decoration: BoxDecoration(
-                            color: success,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Text(
-                            savings["savings_type"],
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            savings["savings_serial"].toString(),
                             style: TextStyle(
-                              color: white,
-                              fontSize: 10,
+                              color: black,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                        ),
-                        SizedBox(height: 7),
-                        Text("Savings Type"),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 100.w,
-                    padding: EdgeInsets.only(bottom: 5),
-                    margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: Colors.grey.shade300,
-                          width: 1,
-                          style: BorderStyle.solid,
-                        ),
+                          SizedBox(height: 7),
+                          Text("Saving ID"),
+                        ],
                       ),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Visibility(
-                          visible: savings["status"] == "0",
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 10, right: 10, top: 3, bottom: 3),
-                            decoration: BoxDecoration(
-                              color: primary,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Text(
-                              "Active",
-                              style: TextStyle(
-                                color: white,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Visibility(
-                          visible: savings["status"] == "1",
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 10, right: 10, top: 3, bottom: 3),
-                            decoration: BoxDecoration(
-                              color: success,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Text(
-                              "Compeleted",
-                              style: TextStyle(
-                                color: white,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Visibility(
-                          visible: savings["status"] == "2",
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 10, right: 10, top: 3, bottom: 3),
-                            decoration: BoxDecoration(
-                              color: error,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Text(
-                              "Blocked",
-                              style: TextStyle(
-                                color: white,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Visibility(
-                          visible: savings["status"] == "3",
-                          child: Container(
-                            padding: EdgeInsets.only(
-                                left: 10, right: 10, top: 3, bottom: 3),
-                            decoration: BoxDecoration(
-                              color: success,
-                              borderRadius: BorderRadius.circular(5),
-                            ),
-                            child: Text(
-                              "Withdrawn",
-                              style: TextStyle(
-                                color: white,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 7),
-                        Text("Savings Status"),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 15),
-                  GestureDetector(
-                    onTap: () => blockbutton(),
-                    child: Container(
-                      margin: EdgeInsets.only(left: 10, right: 10),
-                      height: 50,
+                    Container(
                       width: 100.w,
-                      alignment: Alignment.center,
-                      child: Text(
-                        "View Saving Interval",
-                        style: TextStyle(
-                          color: white,
-                          fontWeight: FontWeight.w600,
+                      padding: EdgeInsets.only(bottom: 5),
+                      margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey.shade300,
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
                         ),
                       ),
-                      decoration: BoxDecoration(
-                        color: primary,
-                        borderRadius: BorderRadius.circular(5),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            stringamount(
+                                savings["saving_total_amount"].toString()),
+                            style: TextStyle(
+                              color: black,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          SizedBox(height: 7),
+                          Text("Total Amount"),
+                        ],
                       ),
                     ),
-                  ),
-                ],
+                    Container(
+                      width: 100.w,
+                      padding: EdgeInsets.only(bottom: 5),
+                      margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey.shade300,
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            stringamount(savings["saving_amount"].toString()),
+                            style: TextStyle(
+                              color: black,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          SizedBox(height: 7),
+                          Text("Recuring Payment Amount"),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 100.w,
+                      padding: EdgeInsets.only(bottom: 5),
+                      margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey.shade300,
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            stringamount(
+                              savings["savedamount"].toString(),
+                            ),
+                            style: TextStyle(
+                              color: black,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          SizedBox(height: 7),
+                          Text("Saved Amount"),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 100.w,
+                      padding: EdgeInsets.only(bottom: 5),
+                      margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey.shade300,
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            savings["saving_interval"].toString(),
+                            style: TextStyle(
+                              color: black,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          SizedBox(height: 7),
+                          Text("Total interval"),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 100.w,
+                      padding: EdgeInsets.only(bottom: 5),
+                      margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey.shade300,
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            savings["paid_interval"].toString(),
+                            style: TextStyle(
+                              color: black,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          SizedBox(height: 7),
+                          Text("Paid Interval"),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 100.w,
+                      padding: EdgeInsets.only(bottom: 5),
+                      margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey.shade300,
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            dateformater(savings["start_date"]),
+                            style: TextStyle(
+                              color: black,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          SizedBox(height: 7),
+                          Text("Start Date"),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 100.w,
+                      padding: EdgeInsets.only(bottom: 5),
+                      margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey.shade300,
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            dateformater(savings["end_date"]),
+                            style: TextStyle(
+                              color: black,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          SizedBox(height: 7),
+                          Text("End Date"),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 100.w,
+                      padding: EdgeInsets.only(bottom: 5),
+                      margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey.shade300,
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(
+                                left: 10, right: 10, top: 3, bottom: 3),
+                            decoration: BoxDecoration(
+                              color: success,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: Text(
+                              savings["savings_type"],
+                              style: TextStyle(
+                                color: white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 7),
+                          Text("Savings Type"),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 100.w,
+                      padding: EdgeInsets.only(bottom: 5),
+                      margin: EdgeInsets.only(left: 15, right: 15, bottom: 10),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.grey.shade300,
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Visibility(
+                            visible: savings["status"] == "0",
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                  left: 10, right: 10, top: 3, bottom: 3),
+                              decoration: BoxDecoration(
+                                color: primary,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Text(
+                                "Active",
+                                style: TextStyle(
+                                  color: white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Visibility(
+                            visible: savings["status"] == "1",
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                  left: 10, right: 10, top: 3, bottom: 3),
+                              decoration: BoxDecoration(
+                                color: success,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Text(
+                                "Compeleted",
+                                style: TextStyle(
+                                  color: white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Visibility(
+                            visible: savings["status"] == "2",
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                  left: 10, right: 10, top: 3, bottom: 3),
+                              decoration: BoxDecoration(
+                                color: error,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Text(
+                                "Blocked",
+                                style: TextStyle(
+                                  color: white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Visibility(
+                            visible: savings["status"] == "3",
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                  left: 10, right: 10, top: 3, bottom: 3),
+                              decoration: BoxDecoration(
+                                color: success,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Text(
+                                "Withdrawn",
+                                style: TextStyle(
+                                  color: white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 7),
+                          Text("Savings Status"),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    GestureDetector(
+                      onTap: () => blockbutton(),
+                      child: Container(
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        height: 50,
+                        width: 100.w,
+                        alignment: Alignment.center,
+                        child: Text(
+                          "View Saving Interval",
+                          style: TextStyle(
+                            color: white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                          color: primary,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 55),
+                  ],
+                ),
               ),
             ),
     );

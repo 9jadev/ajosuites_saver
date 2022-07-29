@@ -144,7 +144,7 @@ class _DashboardState extends State<Dashboard> {
             Obx(
               () => Text(
                 // "Ahamba Solomon",
-                hompage.userdata["name"],
+                hompage.userdata?["name"],
                 maxLines: 2,
                 style: TextStyle(
                   fontSize: 14,

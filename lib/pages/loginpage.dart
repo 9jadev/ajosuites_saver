@@ -7,6 +7,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:sizer/sizer.dart';
 import 'package:ajosuite_saver/utilities/util.dart';
 import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
@@ -34,6 +35,7 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       business = jsonDecode(Get.parameters["business"]!);
     });
+    _updateAppbar();
     super.initState();
   }
 
@@ -68,6 +70,10 @@ class _LoginPageState extends State<LoginPage> {
       print(_);
       context.loaderOverlay.hide();
     });
+  }
+
+  void _updateAppbar() {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   }
 
   @override

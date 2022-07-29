@@ -1,10 +1,12 @@
 import 'package:ajosuite_saver/style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:sizer/sizer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ajosuite_saver/controllers/dashboard/homecontroller.dart';
+import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:get/get.dart';
 
 class Profile extends StatefulWidget {
@@ -22,6 +24,40 @@ class _ProfileState extends State<Profile> {
     authstorage.remove('saver');
     authstorage.remove('token');
     Get.offAllNamed("/getbusiness");
+  }
+
+  previewprofile() {
+    final imageProvider = Image.network(
+      hompage.userdata["logo"].toString(),
+    ).image;
+    showImageViewer(context, imageProvider, onViewerDismissed: () {
+      print("dismissed");
+    });
+  }
+
+  showAlertDialog(BuildContext context) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () => logout(),
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Warning"),
+      content: Text("Are u sure you want to logout."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
   @override
@@ -86,32 +122,35 @@ class _ProfileState extends State<Profile> {
                       ),
                     ],
                   ),
-                  Obx(
-                    () => CachedNetworkImage(
-                      imageUrl: hompage.userdata["logo"].toString(),
-                      // imageUrl:
-                      //     "https://avatars1.githubusercontent.com/u/45692276?v=4",
-                      imageBuilder: (context, imageProvider) => Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          image: DecorationImage(
-                            image: imageProvider,
-                            fit: BoxFit.cover,
+                  GestureDetector(
+                    onTap: () => previewprofile(),
+                    child: Obx(
+                      () => CachedNetworkImage(
+                        imageUrl: hompage.userdata["logo"].toString(),
+                        // imageUrl:
+                        //     "https://avatars1.githubusercontent.com/u/45692276?v=4",
+                        imageBuilder: (context, imageProvider) => Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      ),
-                      progressIndicatorBuilder:
-                          (context, url, downloadProgress) =>
-                              CircularProgressIndicator(
-                                  value: downloadProgress.progress),
-                      errorWidget: (context, url, error) => Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 192, 240, 194),
-                          borderRadius: BorderRadius.circular(100),
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) =>
+                                CircularProgressIndicator(
+                                    value: downloadProgress.progress),
+                        errorWidget: (context, url, error) => Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 192, 240, 194),
+                            borderRadius: BorderRadius.circular(100),
+                          ),
                         ),
                       ),
                     ),
@@ -121,34 +160,35 @@ class _ProfileState extends State<Profile> {
             ),
           ),
           SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Show Balances",
-                  style: TextStyle(
-                    color: white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
-                Switch(
-                  value: showamount,
-                  inactiveTrackColor: scaffoldBackgroundColor,
-                  activeTrackColor: scaffoldBackgroundColor,
-                  activeColor: Colors.orange,
-                  inactiveThumbColor: Colors.orange,
-                  onChanged: (bool value) {
-                    setState(() {
-                      showamount = value;
-                    });
-                  },
-                )
-              ],
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 10),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Text(
+          //         "Show Balances",
+          //         style: TextStyle(
+          //           color: white,
+          //           fontSize: 15,
+          //           fontWeight: FontWeight.w300,
+          //         ),
+          //       ),
+          //       Switch(
+          //         value: showamount,
+          //         inactiveTrackColor: scaffoldBackgroundColor,
+          //         activeTrackColor: scaffoldBackgroundColor,
+          //         activeColor: Colors.orange,
+          //         inactiveThumbColor: Colors.orange,
+
+          //         onChanged: (bool value) {
+          //           setState(() {
+          //             showamount = value;
+          //           });
+          //         },
+          //       )
+          //     ],
+          //   ),
+          // ),
           Expanded(
             child: Container(
               margin: EdgeInsets.only(top: 40),
@@ -175,13 +215,41 @@ class _ProfileState extends State<Profile> {
                     child: Row(
                       children: [
                         Icon(
+                          Ionicons.md_home_outline,
+                          color: Colors.orange,
+                          size: 15,
+                        ),
+                        SizedBox(width: 15),
+                        Text(
+                          "About Business",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: black,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.only(bottom: 10),
+                    decoration: BoxDecoration(
+                      color: white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Color.fromARGB(255, 235, 233, 233),
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
                           Ionicons.person_outline,
                           color: Colors.orange,
                           size: 15,
                         ),
                         SizedBox(width: 15),
                         Text(
-                          "Edit Profile",
+                          "view Profile",
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             color: black,
@@ -218,64 +286,9 @@ class _ProfileState extends State<Profile> {
                       ],
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.only(bottom: 10),
-                    decoration: BoxDecoration(
-                      color: white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: Color.fromARGB(255, 235, 233, 233),
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Ionicons.recording_outline,
-                          color: Colors.orange,
-                          size: 15,
-                        ),
-                        SizedBox(width: 15),
-                        Text(
-                          "Savings Report",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: black,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.only(bottom: 10),
-                    decoration: BoxDecoration(
-                      color: white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: Color.fromARGB(255, 235, 233, 233),
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Ionicons.recording_outline,
-                          color: Colors.orange,
-                          size: 15,
-                        ),
-                        SizedBox(width: 15),
-                        Text(
-                          "Withdrawal Report",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: black,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
                   GestureDetector(
-                    onTap: () => logout(),
+                    // onTap: () => logout(),
+                    onTap: () => showAlertDialog(context),
                     child: Container(
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(

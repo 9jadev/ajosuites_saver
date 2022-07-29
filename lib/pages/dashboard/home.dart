@@ -7,6 +7,7 @@ import 'package:ajosuite_saver/controllers/dashboard/homecontroller.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'savings.dart';
 import 'withdrawals.dart';
+import 'package:upgrader/upgrader.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -40,7 +41,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages!.elementAt(state!.toInt()),
+      // body: pages!.elementAt(state!.toInt()),
+      body: UpgradeAlert(
+        child: pages!.elementAt(state!.toInt()),
+      ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: savingcard,

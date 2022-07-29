@@ -88,7 +88,7 @@ class PushNotificationService {
     FirebaseMessaging.onMessage.listen((RemoteMessage? message) {
       // Get.find<HomeController>().getNotificationsNumber();
       // print(message);
-      print("dncdcnjd");
+      // print("dncdcnjd");
       RemoteNotification? notification = message!.notification;
       AndroidNotification? android = message.notification?.android;
 // If `onMessage` is triggered with a notification, construct our own
