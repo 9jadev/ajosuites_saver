@@ -63,56 +63,78 @@ class CustomTheme with ChangeNotifier {
 
       // ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          elevation: 2,
-          backgroundColor: scaffoldBackgroundColor,
-          selectedItemColor: primary,
-          selectedLabelStyle:
-              TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
-          unselectedLabelStyle:
-              TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
-          // showUnselectedLabels: false,
-          unselectedIconTheme: IconThemeData(
-              color: Colors.grey.shade500,
-              size: 20,
-              shadows: [Shadow(color: Colors.grey.shade300, blurRadius: 1.2)]),
-          selectedIconTheme: IconThemeData(
-              color: primary,
-              size: 20,
-              shadows: [Shadow(color: Colors.grey.shade300, blurRadius: 1.2)])),
+        elevation: 2,
+        backgroundColor: scaffoldBackgroundColor,
+        selectedItemColor: primary,
+        selectedLabelStyle:
+            TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
+        unselectedLabelStyle:
+            TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
+        // showUnselectedLabels: false,
+        unselectedIconTheme: IconThemeData(
+            color: Colors.grey.shade500,
+            size: 20,
+            shadows: [Shadow(color: Colors.grey.shade300, blurRadius: 1.2)]),
+        selectedIconTheme: IconThemeData(
+          color: primary,
+          size: 20,
+          shadows: [
+            Shadow(
+              color: Colors.grey.shade300,
+              blurRadius: 1.2,
+            ),
+          ],
+        ),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         contentPadding:
             const EdgeInsets.symmetric(vertical: 3.0, horizontal: 10.0),
         fillColor: inputColor,
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(
-                color: HexColor("#E3E3E7"),
-                width: 1,
-                style: BorderStyle.solid)),
+          borderRadius: BorderRadius.circular(4),
+          borderSide: BorderSide(
+            color: HexColor("#E3E3E7"),
+            width: 1,
+            style: BorderStyle.solid,
+          ),
+        ),
         focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(
-                color: HexColor("#30475E"),
-                width: 0.8,
-                style: BorderStyle.solid)),
+          borderRadius: BorderRadius.circular(4),
+          borderSide: BorderSide(
+            color: HexColor("#30475E"),
+            width: 0.8,
+            style: BorderStyle.solid,
+          ),
+        ),
         enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide(
-                color: HexColor("#E3E3E7"),
-                width: 1,
-                style: BorderStyle.solid)),
+          borderRadius: BorderRadius.circular(4),
+          borderSide: BorderSide(
+            color: HexColor("#E3E3E7"),
+            width: 1,
+            style: BorderStyle.solid,
+          ),
+        ),
         focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
-            borderSide:
-                BorderSide(color: error, width: 1, style: BorderStyle.solid)),
+          borderRadius: BorderRadius.circular(4),
+          borderSide: BorderSide(
+            color: error,
+            width: 1,
+            style: BorderStyle.solid,
+          ),
+        ),
         errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
-            borderSide:
-                BorderSide(color: error, width: 1, style: BorderStyle.solid)),
+          borderRadius: BorderRadius.circular(4),
+          borderSide: BorderSide(
+            color: error,
+            width: 1,
+            style: BorderStyle.solid,
+          ),
+        ),
         disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(4),
-            borderSide: BorderSide.none),
+          borderRadius: BorderRadius.circular(4),
+          borderSide: BorderSide.none,
+        ),
         errorStyle: const TextStyle(color: Colors.red),
       ),
     );

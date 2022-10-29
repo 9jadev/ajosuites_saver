@@ -4,7 +4,7 @@ import 'package:ajosuite_saver/style.dart';
 import 'package:flutter/services.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ajosuite_saver/controllers/dashboard/homecontroller.dart';
-
+import 'package:flutter/cupertino.dart';
 class SavingCirle extends StatefulWidget {
   const SavingCirle({Key? key}) : super(key: key);
 
@@ -14,6 +14,7 @@ class SavingCirle extends StatefulWidget {
 
 class _SavingCirleState extends State<SavingCirle> {
   final hompage = Get.put(HomePageController());
+  bool loading = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,7 +100,14 @@ class _SavingCirleState extends State<SavingCirle> {
         ),
         backgroundColor: primary,
       ),
-      body: Padding(
+      body:  loading
+        ? Center(
+            child: CupertinoActivityIndicator(
+              animating: true,
+              color: primary,
+              radius: 15,
+            ),
+          ) : Padding(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
